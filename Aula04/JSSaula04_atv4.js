@@ -28,9 +28,12 @@ for (let i4 = 1; i4 < numero4; i4++) {
 switch (divisores4) {
     default:
         popup4 += " NÃO";
-        primo4 = '';
+        primo4 = ' ';
     case 2:
-        popup4 += ` É um número primo, pois possui ${primo4}${divisores4} divisores.`;
+        popup4 += ` É um número primo, pois possui${primo4}${divisores4} divisores.`;
+        break;
+    case 1:
+        popup4 = `${numero4} não é um número primo, porém é ESPECIAL.`;
 }
 
 console.log(popup4);
