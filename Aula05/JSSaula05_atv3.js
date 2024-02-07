@@ -32,12 +32,18 @@ let confirmacoes3 = -1;
 let popup3;
 
 for (let pergunta3 of perguntas3) {
-    resposta3 = confirm(
-        pergunta3 + 
-        "\n\nAperte:\n" +
-        "      OK       ->  Sim\n" +
-        "   Cancelar    ->  Não"
-    );
+    // INSERÇÃO MANUAL
+    /*{    // INÍCIO  <-  comentar|descomentar várias linhas
+        resposta3 = confirm(
+            pergunta3 + 
+            "\n\nAperte:\n" +
+            "      OK       ->  Sim\n" +
+            "   Cancelar    ->  Não"
+        );
+    }*/    // FIM  <-  comentar|descomentar várias linhas
+
+    // INSERÇÃO AUTOMÁTICA
+    resposta3 = Math.round(Math.random());     // <- comentar|descomentar
 
     if (resposta3) {
         confirmacoes3++;

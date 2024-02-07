@@ -15,17 +15,39 @@ alert("Fibonaci & Fatorial");
 
 let numero = parseInt(prompt("Informe um número:"));
 let fatorial = 1;
-let a0 = 0, a1 = 1;
+let an, a0 = 0, a1 = 1;
+let mensagem, fibonacci, calculo;
 
-let mensagem = "Número inválido!\nInforme um ";
 while (isNaN(numero) || numero < 0) {
+    mensagem = "Número inválido!\nInforme um ";
     if (isNaN(numero)) {
-        mensagem += "NÚMERO:"
+        mensagem += "NÚMERO:";
     } else {
-        mensagem += "número POSITIVO:"
+        mensagem += "número POSITIVO:";
     }
-
     numero = parseInt(prompt(mensagem));
-    
-
 }
+
+if (numero === 0) {
+    mensagem = `${numero}!  =  ${fatorial}\n`;
+    mensagem += `Termo zero da sequência de Fibonacci:  a0 = 0`;
+} else {
+    fibonacci = `Sequência de Fibonacci até o ${numero}º termo:\n`;
+    fibonacci += `${a1}`;
+    calculo = `${numero}!:  1`;
+    for (let i = 2; i <= numero; i++) {
+        fatorial *= i;
+        calculo += `x${i}`;
+
+        an = a0 + a1;
+        a0 = a1;
+        a1 = an;
+        fibonacci += `, ${an}`;
+    }
+    calculo += ` = ${fatorial}`;
+
+    mensagem = calculo + '\n\n' + fibonacci;
+}
+
+console.log(mensagem);
+alert(mensagem);
