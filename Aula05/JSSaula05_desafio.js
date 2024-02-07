@@ -45,30 +45,113 @@ saída foi dado pela empresa, e é o seguinte:
     votos.
 */
 
-
-
-
 console.log("DESAFIO");
 alert("Desafio  -  Pesquisa");
 
-let opcao, voto, pergunta;
-let resultado = [];
+// INICIALIZAÇÃO  &  DECLARAÇÃO   DAS VARIÁVEIS NECESSÁRIAS
+let loops = 0;     // <- comentar|descomentar
+let escolha, resultado, porcentagem, vencedor, maior, organizadorSO, organizadorVotos, extra, digitoPar;
+let votacao = [0, 0, 0, 0, 0, 0];
+let total = 0;
+let pergunta = "Qual o melhor Sistema Operacional para uso em servidores?\n";
+let opcoes = ["Windows Server", "Unix", "Linux", "Netware", "MacOS", "Outro"];
 
-let opcoes = "   1. Windows Server\n";
-opcoes += "   2. Unix\n";
-opcoes += "   3. Linux\n";
-opcoes += "   4. Netware\n";
-opcoes += "   5. MacOS\n";
-opcoes += "   6. Outro\n";
-opcoes += "   0. Sair";
+for (let i = 0; i < 6; i++){
+    pergunta += `   ${i+1}. ${opcoes[i]}\n`;
+}
 
+pergunta += "   0. Sair";
+
+// REALIZAÇÃO DA PESQUISA
 do {
-    pergunta = "Qual o melhor Sistema Operacional para uso em servidores?\n";
-    opcao = parseInt(prompt(pergunta + opcoes));
+    // INSERÇÃO DOS VOTOS INDIVIDUALMENTE
+    //escolha = parseInt(prompt(pergunta));     // <- comentar|descomentar
 
-    switch (opcao) {
+
+    // INSERÇÃO AUTOMÁTICA DE 500 VOTOS
+    /**/{   // INÍCIO  <-  comentar|descomentar várias linhas
+        escolha = Math.round(Math.random() * 5) + 1;
+        if (loops === 500) {
+            escolha = 0;
+        }
+        loops++;
+    }/**/   // FIM  <-  comentar|descomentar várias linhas
+
+    switch (escolha) {
         default:
             alert("Opção inválida!\nInforme o número correspondente à opção desejada ao digitar.");
+        case 0:
             break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            votacao[escolha - 1]++;
     }
-} while (opcao !== 0);
+} while (escolha !== 0);
+
+// APURAÇÃO DO TOTAL DE VOTOS
+for (let os of votacao) {
+    total += os;
+}
+
+// APURAÇÃO DE CADA OPÇÃO  &  FORMATAÇÃO DO RESULTADO
+// FORMATAÇÃO
+resultado = "Sistema Operacional  |  Votos  |  %\n";
+resultado += "----------------------------------------\n"
+
+// APURAÇÃO
+for (i = 0; i < 6; i++){
+    porcentagem = votacao[i] * 100 / total;
+
+    {  // FORMATAÇÃO  
+        {   // desnecessária  
+            organizadorSO = '';
+            for (let j = 0; j < 21 - opcoes[i].length; j++) {
+                organizadorSO += ' ';
+            }
+
+            organizadorVotos = '';
+            digitoPar = `${votacao[i]}`.length % 2 === 0;
+            extra = '';
+            for (j = 0; j < (9 - `${votacao[i]}`.length)/2; j++) {
+                if (digitoPar && j === 0) {
+                    continue;
+                }
+                organizadorVotos += ' ';
+            }
+            if (digitoPar) {
+                extra = ' ';
+            }
+        }
+
+        // IMPORTANTE
+        resultado += `${opcoes[i]}${organizadorSO}|` + 
+            `${organizadorVotos}${votacao[i]}${organizadorVotos}${extra}|  ` +
+            `${porcentagem.toFixed(0)}%\n`;
+    }
+
+    // APURAÇÃO DO MAIS VOTADO
+    if (i === 0) {
+        maior = votacao[i];
+    } else {
+        if (votacao[i] > maior) {
+            maior = votacao[i];
+        }
+    }
+}
+
+resultado += `----------------------------------------  Total: ${total}\n\n`
+
+vencedor = votacao.indexOf(maior);
+resultado += `O Sistema Operacional
+mais votado foi o ${opcoes[vencedor]},
+com ${maior} votos,
+correspondendo a ${(maior / total * 100).toFixed(0)}% dos
+votos.`;
+
+console.log(votacao);
+console.log(resultado);
+alert(resultado);

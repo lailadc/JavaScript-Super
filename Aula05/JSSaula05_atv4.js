@@ -4,7 +4,7 @@ ordem inversa.
 */
 
 console.log("ATIVIDADE 04");
-alert("Arividade 04  -  Decrescente");
+alert("Atividade 04  -  Decrescente");
 
 let numero4;
 let numeros4 = [];

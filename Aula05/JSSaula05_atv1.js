@@ -5,7 +5,7 @@ um vetor. Armazene os números pares no vetor 'PAR' e os números
 */
 
 console.log("ATIVIDADE 01");
-alert("Arividade 01  -  Paridade");
+alert("Atividade 01  -  Paridade");
 
 let popup1, numero1;
 let numeros1 = [], pares1 = [], impares1 = [];

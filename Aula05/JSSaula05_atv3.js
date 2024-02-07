@@ -18,7 +18,7 @@ classificada como "Assassino". Caso contrário, será classificada como
 */
 
 console.log("ATIVIDADE 03");
-alert("Arividade 03  -  Investigação");
+alert("Atividade 03  -  Investigação");
 
 const CLASSIFICACAO3 = ["INOCENTE", "SUSPEITO", "CÚMPLICE", "CÚMPLICE", "o ASSASSINO"];
 let perguntas3 = [
