@@ -11,7 +11,7 @@ também a sequência de Fibonacci até aquele número. Isso ajudará os investid
 análises mais detalhadas sobre suas decisões financeiras.
 */
 
-alert("Fibonaci & Fatorial");
+alert("Fibonacci & Fatorial");
 
 let numero = parseInt(prompt("Informe um número:"));
 let fatorial = 1;
