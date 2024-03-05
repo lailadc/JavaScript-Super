@@ -31,12 +31,12 @@ switch(primeiraJogada){
     case 2:
     case 3:
     case 12:
-        mensagem += "CRAPS... Você perdeu!"
+        mensagem += "CRAPS... Você perdeu!";
         break;
     default:
         ponto = primeiraJogada;
         mensagem += "Agora você tem seu PONTO. Boa sorte!";
-        continuar = true
+        continuar = true;
 }
 
 console.log(mensagem);
@@ -46,7 +46,28 @@ if (continuar) {
     do {
         jogadas = dados();
 
-        //   CONTINUAR DAQUI
+        mensagem = `DADOS: ${jogadas}\n`;
+        if (jogadas === 7) {
+            mensagem += "Que pena, você perdeu...";
+            alert(mensagem);
+        } else if (jogadas === ponto) {
+            mensagem += "Parabéns, você venceu!!!";
+            alert(mensagem);
+        } else {
+            mensagem += "Você ainda tem chance... jogue novamente!";
+            continuar = confirm(mensagem);
+        }
 
-    } while (jogadas !== 7 || jogadas != ponto)
+        console.log(mensagem);
+
+        if (!continuar) {
+            mensagem = "Que pena que desistiu...";
+            console.log(mensagem);
+            alert(mensagem);
+            break;
+        }
+
+    } while (jogadas !== 7 && jogadas !== ponto);
 }
+
+console.log("FIM DO JOGO");
